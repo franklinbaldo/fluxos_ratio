@@ -8,39 +8,68 @@ flowchart TD
 
 
 
+CDIST
+
+
+
+subgraph paf
+  #PAF
+  subgraph nmp
+    #PAF#NMP
+    #PAF#NMP#GABs
+  end
+  subgraph nmc
+    #PAF#NMC
+    #PAF#NMC#GABs
+  end
+  subgraph nif
+    #PAF#NIF
+    #PAF#NIF#GABs
+    #PAF#NIF#DESJUD
+  end
+end
+
+
 CDIST --> #PAF
 #PAF --> CDIST
-
-#PAF#NIF#DESJUD
 
 #PAF --> #PAF#NMP
 #PAF --> #PAF#NMC
 #PAF --> #PAF#NIF
 
-#PAF#NMP --> #PAF#NMP#GABs
 #PAF#NMP --> #PAF
+#PAF#NMC --> #PAF
+#PAF#NIF --> #PAF
+
+
+
+
+
+#PAF#NMP --> #PAF#NMP#GABs
+#PAF#NMP#GABs --> #PAF#NMP#ARQ
 #PAF#NMP#GABs --> #PAF#NIF
+#PAF#NMP#ARQ --> #PAF#NMP
+
 
 #PAF#NMC --> #PAF#NMC#GABs
-#PAF#NMC --> #PAF
+#PAF#NMC#GABs --> #PAF#NMC#ARQ
+#PAF#NMC#ARQ --> #PAF#NMC
+#PAF#NMC#GABs --> #PAF#NIF
+
 
 #PAF#NIF --> #PAF#NIF#GABs
-#PAF#NIF --> #PAF
+#PAF#NIF#GABs --> #PAF#NIF#ARQ
+#PAF#NIF#GABs --> #PAF#NMC
+#PAF#NIF#GABs --> #PAF#NMP
+#PAF#NIF#ARQ --> #PAF#NIF
+#PAF#NIF --> #PAF#NIF#DESJUD
 #PAF#NIF#DESJUD --> #PAF#NMC
 #PAF#NIF#DESJUD --> #PAF#NMP
 
 
 
-#PAF
-#PAF#NMP
-#PAF#NMP#GABs
-#PAF#NMP#ARQ
-#PAF#NMC
-#PAF#NMC#GABs
-#PAF#NMC#ARQ
-#PAF#NIF
-#PAF#NIF#GABs
-#PAF#NIF#ARQ
-#PAF#NIF#DESJUD
+
+
+
 
 

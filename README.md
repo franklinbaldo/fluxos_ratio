@@ -5,12 +5,14 @@
 ```mermaid
 flowchart TD
 
-subgraph rotina_pagamento[Rotina pagamento]
-  PAF(PAF) --> verifica_sitafe{Verifica sitafe}
-  verifica_sitafe --> |Todas CDA's quitadas| verifica_honorarios{Verifica honorarios}
-  verifica_sitafe --> |Saldo não pago| atos_constritivos
-  verifica_honorarios --> |Honorários quitados| execucao_quitada
-  execucao_quitada --> peticiona_extincao_por_pagamento[Petiona extinção por pagamento]
+subgraph FLUXOS_PAF[FLUXOS PAF]
+  PAF((PAF)) --> NMP(NMP)
+  PAF((PAF)) --> NIF(NIF)
+  PAF((PAF)) --> NMC(NMC)
+end
+
+subgraph FLUXOS_NMP[FLUXOS NMP]
+ 
 end
 
 subgraph atos_constritivos 

@@ -8,7 +8,8 @@ flowchart TD
 
 
 
-
+CDIST --> #PAF
+#PAF --> CDIST
 
 #PAF#NIF#DESJUD
 

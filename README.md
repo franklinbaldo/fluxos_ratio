@@ -11,20 +11,23 @@ flowchart TD
 
 
 
-
+CDIST
   #PAF
   subgraph nmp
     #PAF#NMP
     #PAF#NMP#GABs
+    #PAF#NMP#ARQ
   end
   subgraph nmc
     #PAF#NMC
     #PAF#NMC#GABs
+    #PAF#NMC#ARQ
   end
   subgraph nif
     #PAF#NIF
     #PAF#NIF#GABs
     #PAF#NIF#DESJUD
+    #PAF#NIF#ARQ
   end
 
 

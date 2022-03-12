@@ -3,16 +3,20 @@
 
 
 ```mermaid
-flowchart TD
+flowchart LR
 
 
+subgraph cdist
+  CDIST((CDIST))
+end
 
+subgraph pge
+  PAF-ARQEXE((PAF-ARQEXE))
+end
 
-
-
-
-CDIST
+subgraph paf
   #PAF
+  
   subgraph nmp
     #PAF#NMP
     #PAF#NMP#GABs
@@ -26,52 +30,34 @@ CDIST
   subgraph nif
     #PAF#NIF
     #PAF#NIF#GABs
-    #PAF#NIF#DESJUD
+    
+    subgraph desjud
+      #PAF#NIF#DESJUD
+    end
     #PAF#NIF#ARQ
-  end
+   end
+end
+
+CDIST <--> #PAF
 
 
-
-CDIST --> #PAF
-#PAF --> CDIST
-
-#PAF --> #PAF#NMP
-#PAF --> #PAF#NMC
-#PAF --> #PAF#NIF
-
-#PAF#NMP --> #PAF
-#PAF#NMC --> #PAF
-#PAF#NIF --> #PAF
+#PAF <--> #PAF#NMP
+#PAF <--> #PAF#NMC
+#PAF <--> #PAF#NIF
 
 
-#PAF#NMP --> #PAF#NMP#GABs
-#PAF#NMP#GABs --> #PAF#NMP#ARQ
-#PAF#NMP#GABs --> #PAF#NIF
-#PAF#NMP#GABs --> #PAF#NMP
-#PAF#NMP#GABs --> #PAF#NMC
-#PAF#NMP#ARQ --> #PAF#NMP
+#PAF#NMP <--> #PAF#NMP#GABs --> #PAF#NMP#ARQ --> #PAF#NMP
+#PAF#NMP#GABs --> #PAF#NMC#ARQ & #PAF#NIF
 
+#PAF#NMC --> #PAF#NMC#GABs <--> #PAF#NMC#ARQ --> #PAF#NMC
+#PAF#NMC#GABs --> #PAF#NMP#ARQ & #PAF#NIF
 
-#PAF#NMC --> #PAF#NMC#GABs
-#PAF#NMC#GABs --> #PAF#NMP
-#PAF#NMC#GABs --> #PAF#NMC
-#PAF#NMC#GABs --> #PAF#NIF
-#PAF#NMC#GABs --> #PAF#NMC#ARQ
-#PAF#NMC#ARQ --> #PAF#NMC
+#PAF#NIF --> #PAF#NIF#GABs <--> #PAF#NIF#ARQ --> #PAF#NIF
+#PAF#NIF#GABs --> #PAF#NMP & #PAF#NMC
 
+#PAF#NIF <--> #PAF#NIF#DESJUD --> #PAF#NMC & #PAF#NMP & PAF-ARQEXE
 
-
-#PAF#NIF --> #PAF#NIF#GABs
-#PAF#NIF#GABs --> #PAF#NIF#ARQ
-#PAF#NIF#GABs --> #PAF#NMP
-#PAF#NIF#GABs --> #PAF#NMC
-#PAF#NIF#GABs --> #PAF#NIF
-#PAF#NIF --> #PAF#NIF#DESJUD
-#PAF#NIF#DESJUD --> #PAF#NMC
-#PAF#NIF#DESJUD --> #PAF#NMP
-#PAF#NIF#ARQ --> #PAF#NIF
-
-
+#PAF#NIF & #PAF#NMP & #PAF#NMC --> PAF-ARQEXE
 
 
 

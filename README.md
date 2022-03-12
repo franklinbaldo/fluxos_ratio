@@ -66,7 +66,8 @@ CDIST <--> #PAF
 #PAF#NIF#DESJUD --> nmp
 #PAF#NIF#DESJUD --> nmc
 
-#PAF#NIF#GABs & #PAF#NMP#GABs & #PAF#NMC#GABs --> PAF-ARQEXE
+PAF-ARQEXE --> #PAF
+
 
 
 

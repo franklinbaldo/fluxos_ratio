@@ -10,30 +10,26 @@ subgraph cdist
   CDIST((CDIST))
 end
 
-subgraph arquivos
-  PAF-ARQEXE((PAF-ARQEXE))
-  #PAF#NIF#ARQ
-  #PAF#NMC#ARQ
-  #PAF#NMP#ARQ
-end
+
 
 subgraph paf
   #PAF
+  PAF-ARQEXE((PAF-ARQEXE))
   
   subgraph nmp
     #PAF#NMP((#PAF#NMP))
     #PAF#NMP#GABs
-    
+    #PAF#NMP#ARQ
   end
   subgraph nmc
     #PAF#NMC((#PAF#NMC))
     #PAF#NMC#GABs
-    
+    #PAF#NMC#ARQ
   end
   subgraph nif
     #PAF#NIF((#PAF#NIF))
     #PAF#NIF#GABs
-    
+    #PAF#NIF#ARQ
     subgraph desjud
       #PAF#NIF#DESJUD
     end
@@ -41,28 +37,29 @@ subgraph paf
    end
 end
 
-CDIST <--> #PAF
+CDIST --> #PAF
+#PAF --> CDIST
 
-#PAF <--> #PAF#NMP
-#PAF <--> #PAF#NMC
-#PAF <--> #PAF#NIF
+#PAF --> nmp
+#PAF --> nmc
+#PAF --> nif
 
-#PAF#NMP <--> #PAF#NMP#GABs --> arquivos 
-#PAF#NMP#ARQ --> #PAF#NMP
+#PAF#NMP --> #PAF#NMP#GABs --> #PAF#NMP#ARQ --> #PAF#NMP
+#PAF#NMP#GABs --> #PAF#NMP
 #PAF#NMP#GABs --> nif
-#PAF#NMP#GABs --> NMP
+#PAF#NMP#GABs --> nmc
 
-#PAF#NMC --> #PAF#NMC#GABs --> arquivos --> #PAF#NMC
-#PAF#NMC#ARQ --> #PAF#NMC
+#PAF#NMC --> #PAF#NMC#GABs --> #PAF#NMC#ARQ --> #PAF#NMC
+#PAF#NMC#GABs --> #PAF#NMC
 #PAF#NMC#GABs --> nif
 #PAF#NMC#GABs --> nmp
 
-#PAF#NIF --> #PAF#NIF#GABs --> arquivos --> #PAF#NIF
-#PAF#NIF#ARQ --> #PAF#NIF
+#PAF#NIF --> #PAF#NIF#GABs --> #PAF#NIF#ARQ --> #PAF#NIF
+#PAF#NIF#GABs --> #PAF#NIF
 #PAF#NIF#GABs --> nmc
 #PAF#NIF#GABs --> nmp
 
-#PAF#NIF --> #PAF#NIF#DESJUD --> arquivos
+#PAF#NIF --> #PAF#NIF#DESJUD --> PAF-ARQEXE
 #PAF#NIF#DESJUD --> nmp
 #PAF#NIF#DESJUD --> nmc
 

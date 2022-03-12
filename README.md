@@ -13,8 +13,8 @@ end
 
 
 subgraph paf
-  #PAF
-  PAF-ARQEXE((PAF-ARQEXE))
+  #PAF((#PAF))
+  PAF-ARQEXEPAF-ARQEXE
   
   subgraph nmp
     #PAF#NMP((#PAF#NMP))
